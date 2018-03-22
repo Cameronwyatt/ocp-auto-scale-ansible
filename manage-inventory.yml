@@ -94,6 +94,16 @@
     tags:
       - cleanup
 
+  - name: Update git user.email config settings
+    git_config:
+      name: user.email
+      value: 'root@{{ ansible_fqdn }}'
+
+  - name: Update git user.name config settings
+    git_config:
+      name: user.name
+      value: root
+
   - name: commit changes to repo
     shell: git add -A && git commit -m "updated by Ansible at $(date +%Y%m%d%H%M%S)"
     args:

@@ -97,11 +97,13 @@
   - name: Update git user.email config settings
     git_config:
       name: user.email
+      scope: global
       value: 'root@{{ ansible_fqdn }}'
 
   - name: Update git user.name config settings
     git_config:
       name: user.name
+      scope: global
       value: root
 
   - name: commit changes to repo

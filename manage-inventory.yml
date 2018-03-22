@@ -96,9 +96,13 @@
 
   - name: Update git user.email config settings
     shell: git config --global user.name "root"
+    tags:
+      - provision
 
   - name: Update git user.name config settings
     shell: git config --global user.email "root@example.com"
+    tags: 
+      - provision
 
   - name: commit changes to repo
     shell: git add -A && git commit -m "updated by Ansible at $(date +%Y%m%d%H%M%S)"

@@ -1,15 +1,13 @@
 ---
 - hosts: localhost
   gather_facts: false
-  vars_files:
-    - passes.yml
   vars:
     git_checkout_path: /tmp/ocp-auto
     inventory_file: "{{ git_checkout_path }}/hosts"
-    project_repo: github.com/jduncan-rva/ocp-auto-scale-ansible.git
-    tower_api_url: https://192.168.122.120/api/v2
-    host_ip: 192.168.122.108
-    inventory_id: 6
+    project_repo: github.com:Cameronwyatt/ocp-auto-scale-ansible.git
+    tower_api_url: https://34.239.157.29/api/v2
+    host_ip: 192.168.122.108 #this is what gets overwritten with the api call
+    inventory_id: 2 
     new_host_parameters: openshift_schedulable=true
 
   tasks:
@@ -42,7 +40,7 @@
   - name: check out repository
     git:
       accept_hostkey: yes
-      repo: "https://{{ project_repo }}"
+      repo: "git@{{ project_repo }}"
       dest: "{{ git_checkout_path }}"
       force: yes
     tags:
@@ -105,7 +103,7 @@
       - cleanup
 
   - name: push updated project repo
-    shell: git push https://{{ github_user }}:{{ github_pass }}@{{ project_repo }} --all
+    shell: git push --all
     args:
       chdir: "{{ git_checkout_path }}"
     tags:

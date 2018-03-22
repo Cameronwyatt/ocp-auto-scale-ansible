@@ -16,7 +16,7 @@
       url: "{{ tower_api_url }}/groups/"
       method: POST
       user: admin
-      password: redhat
+      password: "{{ ansible_pass }}"
       validate_certs: no
       status_code: 201
       body_format: json
@@ -29,7 +29,7 @@
       url: "{{ tower_api_url }}/hosts/"
       method: POST
       user: admin
-      password: redhat
+      password: "{{ ansible_pass }}"
       validate_certs: no
       status_code: 201
       body_format: json

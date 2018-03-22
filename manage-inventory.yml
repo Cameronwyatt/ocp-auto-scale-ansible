@@ -1,6 +1,8 @@
 ---
 - hosts: localhost 
   gather_facts: false
+  vars_files:
+    - passes.yml
   vars:
     git_checkout_path: /tmp/ocp-auto
     inventory_file: "{{ git_checkout_path }}/hosts"

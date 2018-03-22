@@ -95,16 +95,10 @@
       - cleanup
 
   - name: Update git user.email config settings
-    git_config:
-      name: user.email
-      scope: global
-      value: 'root@{{ ansible_fqdn }}'
+    shell: git config --global user.name "root"
 
   - name: Update git user.name config settings
-    git_config:
-      name: user.name
-      scope: global
-      value: root
+    shell: git config --global user.email "root@example.com"
 
   - name: commit changes to repo
     shell: git add -A && git commit -m "updated by Ansible at $(date +%Y%m%d%H%M%S)"

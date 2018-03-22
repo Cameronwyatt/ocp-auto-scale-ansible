@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: masters 
   gather_facts: false
   vars:
     git_checkout_path: /tmp/ocp-auto
